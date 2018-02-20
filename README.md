@@ -1,25 +1,18 @@
-scalatra-scalajs.g8
-=================
+Template for scalajs frontend and Scalatra backend
+====================
 
-giter8 template for web applications based on Scalatra and Scala.js
+based on g8 template by `takezoe/scalatra-scalajs.g8`
+
+Contains a project template for IntelliJ IDEA
 
 ## Usage
 
 You can create and run a project as following:
 
 ```
-$ sbt new takezoe/scalatra-scalajs.g8
-$ cd <name-of-app>
 $ sbt compileAll
 $ sbt ~server/jetty:start
 ```
 
-Then open http://localhost:8080/ in your browser.
+Open http://localhost:8080/ in a browser.
 
-## Components
-
-* Scala 2.12.1
-* scalatra 2.5.0
-* Scala.js 0.6.14
-* twirl 1.3.0
-* sbt 0.13.13
