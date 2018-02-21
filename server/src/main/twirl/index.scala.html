@@ -1,9 +1,13 @@
 @()
 @main {
   <script src="/assets/js/client-fastopt.js"></script>
+
+  <div id="book-container"></div>
+
   <script type="text/javascript">
-    client.SampleApp().main();
+    SampleApp.main(document.getElementById("book-container"));
   </script>
+
   <ul id="books">
   </ul>
 }

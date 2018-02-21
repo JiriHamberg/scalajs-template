@@ -4,7 +4,9 @@ import sbt.Project.projectToRef
 //val Organization = "organization"
 //val Name = "name"
 //val Version = "0.0.1"
+
 lazy val ScalaVersion = "2.12.4"
+//lazy val ScalaVersion = "2.11.8"
 lazy val ScalatraVersion = "2.6.+"
 
 lazy val common = (crossProject.crossType(CrossType.Pure) in file("common"))
@@ -20,7 +22,13 @@ lazy val client = (project in file("client")).settings(
     "com.lihaoyi" %%% "scalatags" % "0.6.2",
     "com.lihaoyi" %%% "scalarx" % "0.3.2",
     "be.doeraene" %%% "scalajs-jquery" % "0.9.1",
-    "com.lihaoyi" %%% "upickle" % "0.4.4"
+    "com.lihaoyi" %%% "upickle" % "0.4.4",
+    //"org.akka-js" %%% "akkajsactor" % "1.2.5.0",
+    //"org.akka-js" %%% "akkajsactor" % "1.2.5.9",
+    //"org.akka-js" %%% "akkajsactorstream" % "1.2.5.9",
+    //"org.akka-js" %%% "akkajstestkit" % "1.2.5.0" % "test",
+    //"org.akka-js" %%% "akkajstestkit" % "1.2.5.9" % "test",
+    //"org.akka-js" %%% "akkajsstreamtestkit" % "1.2.5.9" % "test"
   ),
   scalaJSStage in Global := FastOptStage,
   skip in packageJSDependencies := false
@@ -41,13 +49,17 @@ lazy val server = (project in file("server"))
     //name := Name,
     //version := Version,
     scalaVersion := ScalaVersion,
+    resolvers += "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/",
     scalacOptions := Seq("-deprecation", "-language:postfixOps"),
     libraryDependencies ++= Seq(
       "org.scalatra" %% "scalatra" % ScalatraVersion,
       "org.scalatra" %% "scalatra-specs2" % ScalatraVersion % "test",
       "org.scalatra" %% "scalatra-json" % ScalatraVersion,
+      "org.scalatra" %% "scalatra-atmosphere" % ScalatraVersion,
+      //"com.typesafe.akka" %% "akka-http" % "10.0.5",
       "org.json4s" %% "json4s-jackson" % "3.5.0",
       "org.eclipse.jetty" % "jetty-webapp" % "9.3.9.v20160517" % "container;provided",
+      "org.eclipse.jetty.websocket" %  "websocket-server"    % "9.3.9.v20160517"     % "container;provided",
       "javax.servlet" % "javax.servlet-api" % "3.1.0" % "container;provided;test"
     ),
     javacOptions in compile ++= Seq("-target", "8", "-source", "8"),
